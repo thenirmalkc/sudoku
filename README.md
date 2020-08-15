@@ -1,5 +1,6 @@
 # Generating Sudoku with Shift Algorithm and solving it with Depth First Search ( DFS )
 
+![](screenshots/3X3sudoku.png)
 
 ## Generating Sudoku with Shift Algorithm
 
