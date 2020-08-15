@@ -177,23 +177,23 @@ function setup() {
 }
 
 function draw() {
-  // if (solved) {
-  //   size = floor(sqrt(size));
-  //   size++;
-  //   if (size > 5) size = 3;
-  //   size = size * size;
-  //   difficulty = (sqrt(size) - 1) * sqrt(size);
-  //   width = 50 * size + 100;
-  //   height = 50 * size + 100;
-  //   numbers = [];
-  //   randomNumbers = [];
-  //   solvedSudokuBoard = [];
-  //   sudokuBoard = [];
-  //   emptyCellStack = [];
-  //   visitedCellStack = [];
-  //   solved = false;
-  //   setup();
-  // }
+  if (solved) {
+    size = floor(sqrt(size));
+    size++;
+    if (size > 5) size = 3;
+    size = size * size;
+    difficulty = (sqrt(size) - 1) * sqrt(size);
+    width = 50 * size + 100;
+    height = 50 * size + 100;
+    numbers = [];
+    randomNumbers = [];
+    solvedSudokuBoard = [];
+    sudokuBoard = [];
+    emptyCellStack = [];
+    visitedCellStack = [];
+    solved = false;
+    setup();
+  }
 
   frameRate(20);
   if (emptyCellStack.length) {
@@ -204,7 +204,7 @@ function draw() {
       setTimeout(() => {
         solved = true;
         timeOut = false;
-      }, 2000);
+      }, 1000);
       timeOut = true;
     }
   }
