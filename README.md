@@ -1,6 +1,6 @@
 # Generating Sudoku with Shift Algorithm and solving it with Depth First Search ( DFS )
 
-![9X9 sudoku](screenshots/9X9sudoku.png) ![16X16 sudoku](screenshots/16X16sudoku.png)
+![9X9 sudoku](screenshots/9X9sudoku.png)
 
 ## Generating Sudoku with Shift Algorithm
 
