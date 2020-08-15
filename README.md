@@ -1,6 +1,6 @@
 # Generating Sudoku with Shift Algorithm and solving it with Depth First Search ( DFS )
 
-## For Live Demo ![Click Here!!](https://www.google.com/)
+## For Live Demo ![Click Here!!]()
 
 ![9X9 sudoku](screenshots/9X9sudoku.png)
 
