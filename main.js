@@ -1,9 +1,10 @@
 const { sqrt, random, floor } = Math;
 let size = 3;
 size = size * size;
-let difficulty = (sqrt(size) - 1) * sqrt(size);
-let width = 50 * size + 100;
-let height = 50 * size + 100;
+let difficulty = (sqrt(size) - 1) * sqrt(size) - 2;
+let cellSize = 30;
+let width = cellSize * size + cellSize * 2;
+let height = cellSize * size + cellSize * 2;
 let numbers = [];
 let randomNumbers = [];
 let solvedSudokuBoard = [];
@@ -63,7 +64,7 @@ const drawLines = () => {
   stroke(100);
   for (let row = 0; row < size; row++) {
     for (let col = 0; col < size; col++) {
-      rect(col * 50 + 50, row * 50 + 50, 50, 50);
+      rect(col * cellSize + cellSize, row * cellSize + cellSize, cellSize, cellSize);
     }
   }
 };
@@ -71,7 +72,7 @@ const drawLines = () => {
 const clearPosition = (row, col) => {
   noStroke();
   fill('white');
-  rect(col * 50 + 50 + 2, row * 50 + 2 + 50, 50 - 4, 50 - 4);
+  rect(col * cellSize + cellSize + 2, row * cellSize + 2 + cellSize, cellSize - 4, cellSize - 4);
 };
 
 const drawBorders = () => {
@@ -79,20 +80,20 @@ const drawBorders = () => {
   stroke(100);
   strokeWeight(4);
   for (let i = 0; i < temp - 1; i++) {
-    line(i * temp * 50 + temp * 50 + 50, 0 + 50, i * temp * 50 + temp * 50 + 50, height - 50);
-    line(0 + 50, i * temp * 50 + temp * 50 + 50, width - 50, i * temp * 50 + temp * 50 + 50);
+    line(i * temp * cellSize + temp * cellSize + cellSize, 0 + cellSize, i * temp * cellSize + temp * cellSize + cellSize, height - cellSize);
+    line(0 + cellSize, i * temp * cellSize + temp * cellSize + cellSize, width - cellSize, i * temp * cellSize + temp * cellSize + cellSize);
   }
 };
 
 const fillNumbers = color => {
   noStroke();
   fill(color);
-  textSize(24);
+  textSize(16);
   textAlign('center');
   for (let row = 0; row < size; row++) {
     for (let col = 0; col < size; col++) {
       if (!sudokuBoard[row][col]) continue;
-      text(sudokuBoard[row][col], col * 50 + 75, row * 50 + 85);
+      text(sudokuBoard[row][col], col * cellSize + cellSize + cellSize / 2, row * cellSize + cellSize + cellSize - 10);
     }
   }
 };
@@ -100,9 +101,9 @@ const fillNumbers = color => {
 const fillNumber = (row, col, color) => {
   noStroke();
   fill(color);
-  textSize(24);
+  textSize(16);
   textAlign('center');
-  text(sudokuBoard[row][col], col * 50 + 75, row * 50 + 85);
+  text(sudokuBoard[row][col], col * cellSize + cellSize + cellSize / 2, row * cellSize + cellSize + cellSize - 10);
 };
 
 // solving sudoku
@@ -168,7 +169,7 @@ const dfs = (row, col, index) => {
 
 function setup() {
   let canvas = createCanvas(width, height);
-  canvas.position(20, 20);
+  canvas.position(windowWidth / 2 - width / 2, 20);
   createSudokuBoard();
   getEmptyCellStack();
   drawLines();
@@ -183,8 +184,8 @@ function draw() {
     if (size > 5) size = 3;
     size = size * size;
     difficulty = (sqrt(size) - 1) * sqrt(size);
-    width = 50 * size + 100;
-    height = 50 * size + 100;
+    width = cellSize * size + cellSize * 2;
+    height = cellSize * size + cellSize * 2;
     numbers = [];
     randomNumbers = [];
     solvedSudokuBoard = [];
@@ -195,7 +196,7 @@ function draw() {
     setup();
   }
 
-  frameRate(20);
+  // frameRate(20);
   if (emptyCellStack.length) {
     const { row, col, index } = emptyCellStack.pop();
     dfs(row, col, index);
@@ -204,7 +205,7 @@ function draw() {
       setTimeout(() => {
         solved = true;
         timeOut = false;
-      }, 1000);
+      }, 2000);
       timeOut = true;
     }
   }
